@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node src/bot.ts",
-    "get-invite-link": "ts-node src/invite-link.ts"
+    "get-invite-link": "ts-node src/utils/invite-link/invite-link.ts"
   },
   "dependencies": {
     "axios": "^0.27.2",

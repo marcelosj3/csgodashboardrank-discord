@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const getInviteLink = () => {
+export const getInviteLink = () => {
   const baseLink = "https://discord.com/api/oauth2/authorize?";
 
   const clientId = `client_id=${process.env.DISCORD_CLIENT_ID}`;
