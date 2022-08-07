@@ -1,0 +1,1 @@
+export { getCommand } from "./commands";

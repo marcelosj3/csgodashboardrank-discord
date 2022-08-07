@@ -1,13 +1,15 @@
 import { Client, Interaction } from "discord.js";
 
-import { kills } from "./ranks";
+import { getCommand } from "../utils";
 
 export const interactionCreate = (client: Client) => {
   client.on("interactionCreate", async (interaction: Interaction) => {
     if (!interaction.isChatInputCommand()) return;
 
-    if (interaction.commandName === "kills") {
-      return kills(interaction);
+    const command = getCommand(interaction.commandName);
+
+    if (command) {
+      return command.interaction(interaction);
     }
   });
 };
