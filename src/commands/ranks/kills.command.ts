@@ -1,23 +1,27 @@
-import { ChatInputCommandInteraction, codeBlock } from "discord.js";
+import { ChatInputCommandInteraction } from "discord.js";
+import { TAdditionalInfo } from "src/types";
 
 import { ICommand } from "../../interfaces";
 import { API } from "../../services";
+import { interactionReply, rankFormatter } from "../../utils";
+
+// TODO figure out a way to fetch the types from the other project
+interface IKills {
+  name: string;
+  kills: number;
+  matchUrl?: string;
+}
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
   const kills = await API.get("ranks/kills");
 
-  const killsList = `${kills.data
-    .slice(0, 10)
-    .map((kill: any, index: number) => {
-      return `${index < 9 ? "0" : ""}${index + 1} | name: ${
-        kill.name
-      } - kills: ${kill.kills}`;
-    })
-    .join("\n")}`;
+  const additionalInfo: TAdditionalInfo<IKills> = (rankInfo) => {
+    return `kills: ${rankInfo.kills}`;
+  };
 
-  await interaction.reply({
-    content: codeBlock(killsList),
-  });
+  const killsList = rankFormatter<IKills>(kills.data, additionalInfo);
+
+  await interactionReply(interaction, killsList);
 };
 
 export const kill: ICommand = {
