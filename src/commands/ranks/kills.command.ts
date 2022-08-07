@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction } from "discord.js";
-import { TAdditionalInfo } from "src/types";
 
+import { TAdditionalInfo } from "../../types";
 import { ICommand } from "../../interfaces";
 import { API } from "../../services";
 import { interactionReply, rankFormatter } from "../../utils";
