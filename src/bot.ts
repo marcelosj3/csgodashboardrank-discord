@@ -1,19 +1,23 @@
+import axios from "axios";
 import {
   REST,
   Routes,
   Client,
   GatewayIntentBits,
   Interaction,
+  blockQuote,
+  codeBlock,
 } from "discord.js";
 
 import dotenv from "dotenv";
+import { API } from "./services";
 
 dotenv.config();
 
 const commands = [
   {
-    name: "uba",
-    description: "Replies with Pong!",
+    name: "kills",
+    description: "Replies with a rank of kills",
   },
 ];
 
@@ -48,8 +52,21 @@ client.on("ready", () => {
 client.on("interactionCreate", async (interaction: Interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === "uba") {
-    await interaction.reply("Hello There");
+  if (interaction.commandName === "kills") {
+    const kills = await API.get("ranks/kills");
+
+    const killsList = `${kills.data
+      .map((kill: any, index: number) => {
+        return `${index < 9 ? "0" : ""}${index + 1} | name: ${
+          kill.name
+        } - kills: ${kill.kills}`;
+      })
+      .join("\n")}`;
+    console.log();
+
+    await interaction.reply({
+      content: codeBlock(killsList.slice(0, 1000)),
+    });
   }
 });
 
