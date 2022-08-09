@@ -9,7 +9,7 @@ export const interactionCreate = (client: Client) => {
     const command = getCommand(interaction.commandName);
 
     if (command) {
-      return command.interaction(interaction);
+      return await command.interaction(interaction);
     }
   });
 };
