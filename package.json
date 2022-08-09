@@ -8,7 +8,6 @@
     "node": ">=16"
   },
   "scripts": {
-    "start": "node dist/bot.js",
     "dev": "nodemon src/bot.ts",
     "build": "tsc",
     "get-invite-link": "node dist/utils/invite-link/invite-link.js",
