@@ -4,11 +4,11 @@ import { IKillsRank } from "src/lib/interfaces/ranks";
 
 import { TAdditionalInfo } from "../../types";
 import { ICommand } from "../../interfaces";
-import { API } from "../../services";
-import { interactionReply, rankFormatter } from "../../utils";
+import { APIPath, interactionReply, rankFormatter } from "../../utils";
+import { APIGet } from "../../services";
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
-  const kills = await API.get("ranks/kills");
+  const kills = await APIGet(APIPath.RanksKills);
 
   const additionalInfo: TAdditionalInfo<IKillsRank> = (rankInfo) => {
     return `kills: ${rankInfo.kills}`;
