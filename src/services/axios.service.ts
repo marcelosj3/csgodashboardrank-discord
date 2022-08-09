@@ -13,10 +13,13 @@ const API = axios.create({
 
 export const APIGet = async (
   path: APIPath,
-  interaction: ChatInputCommandInteraction
+  interaction: ChatInputCommandInteraction,
+  queryParams?: string[]
 ): Promise<AxiosResponse<any, any> | undefined> => {
   try {
-    return await API.get(String(path));
+    const params = queryParams ? `?${queryParams.join("&")}` : "";
+
+    return await API.get(String(path) + params);
   } catch (error) {
     console.error(`GET ${path}`, error);
     errorHandler(interaction, error);
