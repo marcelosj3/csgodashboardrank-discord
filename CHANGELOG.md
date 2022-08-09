@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.2.0...v1.3.0) (2022-08-09)
+
+
+### Features
+
+* creat errors handler and kill command options ([997f9fb](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/997f9fbfc5e0a1a12ec0af0c0e4883ed128285a4))
+* query params enum, add options info to command ([4f1fb77](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/4f1fb77af8b954b45f3cd6ee26d6890b11f38a12))
+
+
+### Bug Fixes
+
+* add await to command interaction ([ba7ad00](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/ba7ad0070d7256ce3f2fd355f63066c78e313fe5))
+
 ## [1.2.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.1.0...v1.2.0) (2022-08-09)
 
 
