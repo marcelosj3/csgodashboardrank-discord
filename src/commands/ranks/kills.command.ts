@@ -5,7 +5,7 @@ import { IKillsRank } from "src/lib/interfaces/ranks";
 import { TAdditionalInfo } from "../../types";
 import { ICommand } from "../../interfaces";
 import { APIPath, interactionReply, rankFormatter } from "../../utils";
-import { APIGet } from "src/services";
+import { APIGet } from "../../services";
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
   const kills = await APIGet(APIPath.RanksKills);
