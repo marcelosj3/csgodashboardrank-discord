@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.1.0...v1.2.0) (2022-08-09)
+
+
+### Features
+
+* add nodemon development dependency ([4c639a8](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/4c639a8227e1b1cca57d810cc84e9c51cfcbf863))
+* add procfile ([f09ac41](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/f09ac41d07fb2b3750d5096216428a5029023470))
+* add scripts to run hot load dev server ([cc8e079](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/cc8e0796761d0aa898202563a6a0559044e6676f))
+* add url env variable, create enum to handle api paths ([fd18b39](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/fd18b394924e2ab6bb2b788de4be90c68ac13d0d))
+* heroku start script ([ca89e73](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/ca89e738c7f67b51b90b35230c0ab4ffcf159502))
+* implement api get function with api path parameter ([a691038](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/a69103805f52d259e98aed0404fa2879ff3441d7))
+* remove start script ([bd75cc5](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/bd75cc50a50b5d2ac3ee1f444e54aede33c36b27))
+* update invite link script ([0e9603e](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/0e9603ef943f2b634656486a4aafcb11f6b4e568))
+
+
+### Bug Fixes
+
+* improve lib structure and interface import ([5d0c8c2](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/5d0c8c2b77547f65335b2395456d9ba96e0fef49))
+* remove old type and fetch types from lib ([7ef62ca](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/7ef62ca188ebd978664e4fda0ef895866f89233f))
+
 ## 1.1.0 (2022-08-08)
 
 
