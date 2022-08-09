@@ -11,7 +11,7 @@
     "start": "node dist/bot.js",
     "dev": "nodemon src/bot.ts",
     "build": "tsc",
-    "get-invite-link": "ts-node src/utils/invite-link/invite-link.ts",
+    "get-invite-link": "node dist/utils/invite-link/invite-link.js",
     "release": "standard-version"
   },
   "dependencies": {
