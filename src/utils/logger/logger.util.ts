@@ -9,7 +9,7 @@ const LoggerInfo = (
   detail?: string,
   interaction?: Interaction
 ): ILogger => {
-  return {
+  const response = {
     level: level,
     name: name,
     detail: detail,
@@ -22,6 +22,8 @@ const LoggerInfo = (
     message: message,
     timestamp: new Date().toDateString(),
   };
+
+  return response;
 };
 
 export const Logger = (
@@ -31,9 +33,13 @@ export const Logger = (
   detail?: string,
   interaction?: Interaction
 ): void => {
+  console.log("-".repeat(25));
+  console.log();
   if (level === LoggerLevel.ERROR) {
     console.error(LoggerInfo(name, level, message, detail, interaction));
   } else {
     console.log(LoggerInfo(name, level, message, detail, interaction));
   }
+  console.log();
+  console.log("-".repeat(25));
 };
