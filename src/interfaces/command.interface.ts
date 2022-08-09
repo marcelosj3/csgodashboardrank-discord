@@ -3,13 +3,6 @@ import {
   ChatInputCommandInteraction,
 } from "discord.js";
 
-// interface ICommandOptions extends APIApplicationCommandOption {
-//   name: string;
-//   description: string;
-//   required: boolean;
-//   type: ApplicationCommandOptionType;
-// }
-
 export interface ICommand {
   name: string;
   description: string;
