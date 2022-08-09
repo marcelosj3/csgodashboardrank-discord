@@ -1,1 +1,1 @@
-export { API } from "./axios.service";
+export { APIGet } from "./axios.service";

@@ -1,25 +1,20 @@
 import { ChatInputCommandInteraction } from "discord.js";
 
+import { IKillsRank } from "src/lib/interfaces/ranks";
+
 import { TAdditionalInfo } from "../../types";
 import { ICommand } from "../../interfaces";
-import { API } from "../../services";
-import { interactionReply, rankFormatter } from "../../utils";
-
-// TODO figure out a way to fetch the types from the other project
-interface IKills {
-  name: string;
-  kills: number;
-  matchUrl?: string;
-}
+import { APIPath, interactionReply, rankFormatter } from "../../utils";
+import { APIGet } from "../../services";
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
-  const kills = await API.get("ranks/kills");
+  const kills = await APIGet(APIPath.RanksKills);
 
-  const additionalInfo: TAdditionalInfo<IKills> = (rankInfo) => {
+  const additionalInfo: TAdditionalInfo<IKillsRank> = (rankInfo) => {
     return `kills: ${rankInfo.kills}`;
   };
 
-  const killsList = rankFormatter<IKills>(kills.data, additionalInfo);
+  const killsList = rankFormatter<IKillsRank>(kills.data, additionalInfo);
 
   await interactionReply(interaction, killsList);
 };
