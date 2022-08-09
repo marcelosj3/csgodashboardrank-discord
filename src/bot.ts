@@ -30,8 +30,20 @@ const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN!);
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-client.on("ready", () => {
+client.on("ready", async () => {
   console.log(`Logged in as ${client.user!.tag}!`);
+
+  const guild = client.guilds.cache.get(process.env.DISCORD_GUILD_ID!);
+
+  for (let i = 0; i < commands.length; i++) {
+    const command = commands[i];
+
+    await guild?.commands.create({
+      name: command.name,
+      description: command.description,
+      options: command.options,
+    });
+  }
 });
 
 interactionCreate(client);

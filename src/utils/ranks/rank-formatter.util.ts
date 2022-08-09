@@ -26,6 +26,10 @@ export const rankFormatter = <T>(
         ? ` - ${rankAdditionalInfo(rankInfo)}`
         : "";
 
+      console.log();
+      console.log(additionalInfo);
+      console.log();
+
       return `${rankAndName}${additionalInfo}`;
     })
     .join("\n")}`;
