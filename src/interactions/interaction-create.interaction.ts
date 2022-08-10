@@ -10,7 +10,6 @@ export const interactionCreate = (client: Client) => {
       LoggerName.DISCORD,
       LoggerLevel.INFO,
       "Starting slash command...",
-      undefined,
       interaction
     );
 
@@ -21,7 +20,6 @@ export const interactionCreate = (client: Client) => {
         LoggerName.DISCORD,
         LoggerLevel.INFO,
         `Starting slash command: ${interaction.commandName}`,
-        undefined,
         interaction
       );
 

@@ -1,5 +1,5 @@
 export enum LoggerName {
-  HEROKU = "HEROKU",
-  DISCORD = "DISCORD",
   API = "API",
+  DISCORD = "DISCORD",
+  HEROKU = "HEROKU",
 }

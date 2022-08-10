@@ -5,14 +5,19 @@ import { ILogger, LoggerLevel, LoggerName } from "./types";
 const LoggerInfo = (
   name: LoggerName,
   level: LoggerLevel,
-  message: string | unknown,
-  detail?: string,
+  message: string,
   interaction?: Interaction
-): ILogger => {
-  const response = {
+) => {
+  const date = new Date();
+  const timestamp = `${[
+    date.getDay().toString().padStart(2, "0"),
+    (date.getMonth() + 1).toString().padStart(2, "0"),
+    String(date.getFullYear()).slice(2, 4),
+  ].join("/")} ${date.toLocaleTimeString()}`;
+
+  const response: ILogger = {
     level: level,
     name: name,
-    detail: detail,
     user: interaction
       ? {
           id: interaction.user.id,
@@ -20,26 +25,24 @@ const LoggerInfo = (
         }
       : undefined,
     message: message,
-    timestamp: new Date().toDateString(),
+    timestamp: timestamp,
   };
 
-  return response;
+  const userInfo = response.user ? ` | user: ${response.user?.username} |` : "";
+
+  return `${timestamp} - {${level}} [${name}]${userInfo} - ${message}`;
 };
 
 export const Logger = (
   name: LoggerName,
   level: LoggerLevel,
-  message: string | unknown,
-  detail?: string,
+  message: string,
   interaction?: Interaction
 ): void => {
-  console.log("-".repeat(25));
-  console.log();
   if (level === LoggerLevel.ERROR) {
-    console.error(LoggerInfo(name, level, message, detail, interaction));
+    console.log("~".repeat(50));
+    console.error(LoggerInfo(name, level, message, interaction));
   } else {
-    console.log(LoggerInfo(name, level, message, detail, interaction));
+    console.log(LoggerInfo(name, level, message, interaction));
   }
-  console.log();
-  console.log("-".repeat(25));
 };
