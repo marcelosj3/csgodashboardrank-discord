@@ -1,6 +1,8 @@
 import { IMatchDetails, IScoreboard } from "src/lib/interfaces/matches";
 import { IPlayerMatchSerializer } from "src/lib/interfaces/serializers";
 
+import { dateFormatter } from "../../../utils";
+
 const handleScoreboard = (value: IScoreboard) => {
   const scoreboardValue = [
     "scoreboard: {",
@@ -22,6 +24,8 @@ export const matchInfoToString = (matchInfo: IMatchDetails): string => {
   const responseArray = Object.entries(matchInfo).map((match) => {
     const [key, value] = match;
 
+    if (key === "matchUrl") return `${key}: "${value}"`;
+    if (key === "date") return `${key}: "${dateFormatter(new Date(value))}"`;
     if (key === "scoreboard") return handleScoreboard(value);
     if (key === "players") return handlePlayers(value);
 

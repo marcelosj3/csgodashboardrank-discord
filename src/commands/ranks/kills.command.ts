@@ -20,6 +20,7 @@ import { APIPath } from "../../enums";
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
   try {
+    await interaction.reply("Fetching kills rank...");
     const matchUrlOption = interaction.options.get(KillsQueryParams.MATCH_URL);
 
     const optionArray = [matchUrlOption];

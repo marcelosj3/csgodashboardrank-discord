@@ -7,6 +7,8 @@ export {
   optionsToQueryParams,
 } from "./commands";
 
+export { dateFormatter } from "./generic";
+
 export { interactionReply } from "./interactions";
 
 export { Logger, LoggerLevel, LoggerName } from "./logger";

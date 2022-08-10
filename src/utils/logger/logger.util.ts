@@ -1,4 +1,5 @@
 import { Interaction } from "discord.js";
+import { dateFormatter } from "../generic";
 
 import { ILogger, LoggerLevel, LoggerName } from "./types";
 
@@ -9,11 +10,7 @@ const LoggerInfo = (
   interaction?: Interaction
 ) => {
   const date = new Date();
-  const timestamp = `${[
-    date.getDay().toString().padStart(2, "0"),
-    (date.getMonth() + 1).toString().padStart(2, "0"),
-    String(date.getFullYear()).slice(2, 4),
-  ].join("/")} ${date.toLocaleTimeString()}`;
+  const timestamp = dateFormatter(date);
 
   const response: ILogger = {
     level: level,

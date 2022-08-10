@@ -17,6 +17,7 @@ interface IPayload {
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
   try {
+    await interaction.reply("Fetching match data...");
     const urlOption = interaction.options.get("url");
 
     const data: IPayload = { url: urlOption!.value as string };
@@ -28,10 +29,6 @@ const interaction = async (interaction: ChatInputCommandInteraction) => {
     );
 
     const matchInfo: IMatchDetails = matches?.data;
-
-    console.log();
-    console.log("hasMatchInfo", !!matchInfo);
-    console.log();
 
     if (matchInfo) {
       const response = matchInfoToString(matchInfo);
