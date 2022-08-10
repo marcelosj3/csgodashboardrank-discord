@@ -5,5 +5,5 @@ export const errorHandler = async (
   interaction: ChatInputCommandInteraction,
   error: string
 ) => {
-  return await interactionReply(interaction, `error: ${error}`);
+  return await interactionReply(interaction, `error: "${error}"`);
 };

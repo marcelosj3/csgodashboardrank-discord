@@ -4,10 +4,11 @@ import {
 } from "discord.js";
 
 import { ICommand } from "../../interfaces";
-import { interactionReply } from "../../utils";
+import { interactionReply, matchInfoToString } from "../../utils";
 import { errorHandler } from "../../errors";
 import { APIPath } from "../../enums";
 import { API } from "../../services";
+import { IMatchDetails } from "src/lib/interfaces/matches";
 
 // TODO change this when implementing payload handle in the API
 interface IPayload {
@@ -26,7 +27,17 @@ const interaction = async (interaction: ChatInputCommandInteraction) => {
       data
     );
 
-    await interactionReply(interaction, matches?.data);
+    const matchInfo: IMatchDetails = matches?.data;
+
+    console.log();
+    console.log("hasMatchInfo", !!matchInfo);
+    console.log();
+
+    if (matchInfo) {
+      const response = matchInfoToString(matchInfo);
+
+      await interactionReply(interaction, response);
+    }
   } catch (error: any) {
     errorHandler(interaction, error);
   }
