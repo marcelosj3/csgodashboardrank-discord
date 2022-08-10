@@ -33,7 +33,7 @@ const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN!);
       "Successfully reloaded application (/) commands."
     );
   } catch (error: unknown) {
-    Logger(LoggerName.HEROKU, LoggerLevel.ERROR, error);
+    Logger(LoggerName.HEROKU, LoggerLevel.ERROR, JSON.stringify(error));
   }
 })();
 
@@ -61,7 +61,7 @@ client.on("ready", async () => {
       Logger(
         LoggerName.DISCORD,
         LoggerLevel.INFO,
-        `Creating command: ${command}`
+        `Creating command: ${command.name}`
       );
       await guild?.commands.create({
         name: command.name,
@@ -71,11 +71,12 @@ client.on("ready", async () => {
       Logger(
         LoggerName.DISCORD,
         LoggerLevel.INFO,
-        `Successfully created command: ${command}`
+        `Successfully created command: ${command.name}`
       );
     }
+    Logger(LoggerName.DISCORD, LoggerLevel.INFO, `Finished all commands...`);
   } catch (error: unknown) {
-    Logger(LoggerName.DISCORD, LoggerLevel.ERROR, error);
+    Logger(LoggerName.DISCORD, LoggerLevel.ERROR, JSON.stringify(error));
   }
 });
 

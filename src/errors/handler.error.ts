@@ -3,7 +3,7 @@ import { interactionReply } from "../utils";
 
 export const errorHandler = async (
   interaction: ChatInputCommandInteraction,
-  error: any
+  error: string
 ) => {
-  return await interactionReply(interaction, `error: ${error.message}`);
+  return await interactionReply(interaction, `error: ${error}`);
 };
