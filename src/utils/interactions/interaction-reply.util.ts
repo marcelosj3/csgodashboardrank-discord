@@ -6,7 +6,13 @@ export const interactionReply = async (
   data: string
 ) => {
   try {
-    return await interaction.reply({
+    Logger(
+      LoggerName.DISCORD,
+      LoggerLevel.INFO,
+      `Replying command ${interaction.commandName}`,
+      interaction
+    );
+    return await interaction.editReply({
       content: codeBlock("elixir", data),
     });
   } catch (error: any) {

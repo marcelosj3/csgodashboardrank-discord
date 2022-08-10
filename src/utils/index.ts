@@ -1,10 +1,13 @@
 export { APIErrorHandler, APILoggerMessage, getFullPath } from "./api";
 
 export {
+  matchInfoToString,
   getCommand,
   optionsToAdditionalInfo,
   optionsToQueryParams,
 } from "./commands";
+
+export { dateFormatter } from "./generic";
 
 export { interactionReply } from "./interactions";
 

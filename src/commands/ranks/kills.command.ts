@@ -19,7 +19,9 @@ import { KillsQueryParams } from "../../enums/api/query-params";
 import { APIPath } from "../../enums";
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
+  console.log("oi");
   try {
+    await interaction.reply("Fetching kills rank...");
     const matchUrlOption = interaction.options.get(KillsQueryParams.MATCH_URL);
 
     const optionArray = [matchUrlOption];
@@ -43,9 +45,9 @@ const interaction = async (interaction: ChatInputCommandInteraction) => {
       return [...essential, ...additional].join(" - ");
     };
 
-    const killsList = rankFormatter<IKillsRank>(kills!.data, additionalInfo);
+    const response = rankFormatter<IKillsRank>(kills!.data, additionalInfo);
 
-    await interactionReply(interaction, killsList);
+    await interactionReply(interaction, response);
   } catch (error: any) {
     errorHandler(interaction, error);
   }

@@ -7,6 +7,8 @@ export const rankFormatter = <T>(
 ) => {
   let biggestNameLength = 0;
 
+  if (rankData.length == 0) return `info: "No info added to this rank yet..."`;
+
   return `${rankData
     .slice(0, maxNumber)
     .map((rankInfo: any, index: number) => {

@@ -14,11 +14,22 @@ export const APIErrorHandler = (
   interaction: ChatInputCommandInteraction,
   data?: any
 ) => {
-  const verbAndPath = APILoggerMessage(verb, path, data, interaction, false);
+  const verbAndPath = APILoggerMessage(
+    verb,
+    path,
+    "FAIL",
+    data,
+    interaction,
+    false
+  );
 
-  const errorResponse = error.response.data.message.error;
+  let errorResponse = error.response.data.message;
+
+  if (errorResponse instanceof Object) {
+    errorResponse = error.response.data.message.error;
+  }
+
   const errorMessage = `error: ${errorResponse}`;
-
   const message = `${verbAndPath} - ${errorMessage}`;
 
   Logger(LoggerName.API, LoggerLevel.ERROR, message, interaction);
