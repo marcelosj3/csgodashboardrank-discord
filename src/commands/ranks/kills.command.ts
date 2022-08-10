@@ -6,43 +6,48 @@ import {
 import { IKillsRank } from "src/lib/interfaces/ranks";
 
 import { TAdditionalInfo } from "../../types";
-import { ICommand } from "../../interfaces";
-import { APIPath, interactionReply, rankFormatter } from "../../utils";
-import { APIGet } from "../../services";
+import { ICommand, IOptionInfo } from "../../interfaces";
+import {
+  interactionReply,
+  optionsToAdditionalInfo,
+  optionsToQueryParams,
+  rankFormatter,
+} from "../../utils";
+import { API } from "../../services";
 import { errorHandler } from "../../errors";
-import { KillsQueryParams } from "../../utils/api/query-params/kills.query-params";
+import { KillsQueryParams } from "../../enums/api/query-params";
+import { APIPath } from "../../enums";
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
+  console.log("oi");
   try {
+    await interaction.reply("Fetching kills rank...");
     const matchUrlOption = interaction.options.get(KillsQueryParams.MATCH_URL);
 
-    const options = [matchUrlOption]
-      .filter((option) => option?.value)
-      .map((option) => option!.name);
+    const optionArray = [matchUrlOption];
+    const options = optionsToQueryParams(optionArray);
 
-    const kills = await APIGet(APIPath.RanksKills, interaction, options);
+    const kills = await API.get(APIPath.RanksKills, interaction, options);
 
     const additionalInfo: TAdditionalInfo<IKillsRank> = (rankInfo) => {
       const kills = `kills: ${rankInfo.kills}`;
 
-      const optionsInfo: { [key: string]: string } = {
+      const optionsInfo: IOptionInfo = {
         match_url: `matchUrl: "${rankInfo.matchUrl}"`,
       };
 
-      const additional = [kills];
+      const essential: string[] = [kills];
+      const additional: string[] = optionsToAdditionalInfo(
+        options,
+        optionsInfo
+      );
 
-      options.forEach((option: string) => {
-        if (optionsInfo[option]) {
-          additional.push(optionsInfo[option]);
-        }
-      });
-
-      return additional.join(" - ");
+      return [...essential, ...additional].join(" - ");
     };
 
-    const killsList = rankFormatter<IKillsRank>(kills!.data, additionalInfo);
+    const response = rankFormatter<IKillsRank>(kills!.data, additionalInfo);
 
-    await interactionReply(interaction, killsList);
+    await interactionReply(interaction, response);
   } catch (error: any) {
     errorHandler(interaction, error);
   }

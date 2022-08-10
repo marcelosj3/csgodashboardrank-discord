@@ -8,7 +8,6 @@ export interface ILogger {
     id: string;
     username: string;
   };
-  detail?: string;
-  message: string | unknown;
+  message: string;
   timestamp: string;
 }

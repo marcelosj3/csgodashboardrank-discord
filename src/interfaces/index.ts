@@ -1,1 +1,1 @@
-export { ICommand } from "./command.interface";
+export { ICommand, IOptionInfo } from "./commands/";
