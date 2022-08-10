@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.4.0...v1.5.0) (2022-08-10)
+
+
+### Features
+
+* add empty state for ranks response ([e830b22](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/e830b224a8d5506217c4a84de13ef5d48ce603cb))
+* handle match return ([cab4473](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/cab44734214a4b3415e15dc157a5c462846c5fad))
+* improve logger and add more logs ([1999a05](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/1999a05191f915f6fb592fa906cab3c2c37425ac))
+* polish response and manage edit reply ([722ba00](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/722ba0001b332f119c973886170a9df518145325))
+
+
+### Bug Fixes
+
+* refactor all typing and functions into utils and specific folders ([b293d80](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/b293d80839121688a95c69da3b5054657019dd26))
+
 ## [1.4.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.3.0...v1.4.0) (2022-08-09)
 
 
