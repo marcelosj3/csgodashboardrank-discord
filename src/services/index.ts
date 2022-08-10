@@ -1,1 +1,3 @@
-export { APIGet, APIPost } from "./axios.service";
+import API from "./api.service";
+
+export { API };

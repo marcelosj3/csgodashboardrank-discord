@@ -4,17 +4,27 @@ import {
 } from "discord.js";
 
 import { ICommand } from "../../interfaces";
-import { APIPath, interactionReply } from "../../utils";
-import { APIPost } from "../../services";
+import { interactionReply } from "../../utils";
 import { errorHandler } from "../../errors";
+import { APIPath } from "../../enums";
+import { API } from "../../services";
+
+// TODO change this when implementing payload handle in the API
+interface IPayload {
+  url: string;
+}
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
   try {
     const urlOption = interaction.options.get("url");
 
-    const data = { url: urlOption!.value as string };
+    const data: IPayload = { url: urlOption!.value as string };
 
-    const matches = await APIPost(APIPath.Matches, interaction, data);
+    const matches = await API.post<IPayload>(
+      APIPath.Matches,
+      interaction,
+      data
+    );
 
     await interactionReply(interaction, matches?.data);
   } catch (error: any) {
