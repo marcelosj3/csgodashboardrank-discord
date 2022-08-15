@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.5.0...v1.6.0) (2022-08-15)
+
+
+### Features
+
+* embed message reply and player register ([94f7b9b](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/94f7b9b1a3fb66701b7350a5986d457821cceb6c))
+
 ## [1.5.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.4.0...v1.5.0) (2022-08-10)
 
 
