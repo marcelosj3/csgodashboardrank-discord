@@ -3,7 +3,8 @@ import {
   ChatInputCommandInteraction,
 } from "discord.js";
 
-import { IKillsRank } from "src/lib/interfaces/ranks";
+import { IRanksKills } from "../../lib/interfaces/ranks";
+import { QueryParam } from "../../lib/enums";
 
 import { TAdditionalInfo } from "../../types";
 import { ICommand, IOptionInfo } from "../../interfaces";
@@ -15,21 +16,26 @@ import {
 } from "../../utils";
 import { API } from "../../services";
 import { errorHandler } from "../../errors";
-import { KillsQueryParams } from "../../enums/api/query-params";
 import { APIPath } from "../../enums";
 
 const interaction = async (interaction: ChatInputCommandInteraction) => {
-  console.log("oi");
   try {
     await interaction.reply("Fetching kills rank...");
-    const matchUrlOption = interaction.options.get(KillsQueryParams.MATCH_URL);
+    const matchUrlOption = interaction.options.get(QueryParam.MATCH_URL);
+    const duplicatesOption = interaction.options.get(QueryParam.DUPLICATES);
+    const reversedOption = interaction.options.get(QueryParam.REVERSED);
+    const sortByOption = interaction.options.get(QueryParam.SORT_BY);
 
-    const optionArray = [matchUrlOption];
+    const optionArray = [
+      matchUrlOption,
+      duplicatesOption,
+      reversedOption,
+      sortByOption,
+    ];
     const options = optionsToQueryParams(optionArray);
-
     const kills = await API.get(APIPath.RanksKills, interaction, options);
 
-    const additionalInfo: TAdditionalInfo<IKillsRank> = (rankInfo) => {
+    const additionalInfo: TAdditionalInfo<IRanksKills> = (rankInfo) => {
       const kills = `kills: ${rankInfo.kills}`;
 
       const optionsInfo: IOptionInfo = {
@@ -45,7 +51,7 @@ const interaction = async (interaction: ChatInputCommandInteraction) => {
       return [...essential, ...additional].join(" - ");
     };
 
-    const response = rankFormatter<IKillsRank>(kills!.data, additionalInfo);
+    const response = rankFormatter<IRanksKills>(kills?.data, additionalInfo);
 
     await interactionReply(interaction, response);
   } catch (error: any) {
@@ -59,10 +65,28 @@ export const kill: ICommand = {
   interaction,
   options: [
     {
-      name: KillsQueryParams.MATCH_URL,
+      name: QueryParam.MATCH_URL,
       description: "Displays the match url",
       required: false,
       type: ApplicationCommandOptionType.Boolean,
+    },
+    {
+      name: QueryParam.DUPLICATES,
+      description: "Includes duplicates of the players",
+      required: false,
+      type: ApplicationCommandOptionType.Boolean,
+    },
+    {
+      name: QueryParam.REVERSED,
+      description: "Shows the reversed values of the list",
+      required: false,
+      type: ApplicationCommandOptionType.Boolean,
+    },
+    {
+      name: QueryParam.SORT_BY,
+      description: "Shows the reversed values of the list",
+      required: false,
+      type: ApplicationCommandOptionType.String,
     },
   ],
 };
