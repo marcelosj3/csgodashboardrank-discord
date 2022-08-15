@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.6.0...v1.7.0) (2022-08-15)
+
+
+### Features
+
+* add new options to kills rank command ([592e3d1](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/592e3d18a7a4b5426059e88d50d825b1a73815bd))
+* test ([e4893db](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/e4893db2ef78f9eba76ea2d8f1ea372cd3e989f8))
+
 ## [1.6.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.5.0...v1.6.0) (2022-08-15)
 
 
