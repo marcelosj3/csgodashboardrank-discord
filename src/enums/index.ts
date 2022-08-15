@@ -1,1 +1,1 @@
-export { APIPath, QueryParams, APIVerbs } from "./api";
+export { APIPath, APIVerbs } from "./api";
