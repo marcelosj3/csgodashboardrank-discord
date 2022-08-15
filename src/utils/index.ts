@@ -2,6 +2,7 @@ export { APIErrorHandler, APILoggerMessage, getFullPath } from "./api";
 
 export {
   matchInfoToString,
+  playerInfoToEmbed,
   getCommand,
   optionsToAdditionalInfo,
   optionsToQueryParams,
