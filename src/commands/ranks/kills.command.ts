@@ -22,10 +22,17 @@ const interaction = async (interaction: ChatInputCommandInteraction) => {
   try {
     await interaction.reply("Fetching kills rank...");
     const matchUrlOption = interaction.options.get(QueryParam.MATCH_URL);
+    const duplicatesOption = interaction.options.get(QueryParam.DUPLICATES);
+    const reversedOption = interaction.options.get(QueryParam.REVERSED);
+    const sortByOption = interaction.options.get(QueryParam.SORT_BY);
 
-    const optionArray = [matchUrlOption];
+    const optionArray = [
+      matchUrlOption,
+      duplicatesOption,
+      reversedOption,
+      sortByOption,
+    ];
     const options = optionsToQueryParams(optionArray);
-
     const kills = await API.get(APIPath.RanksKills, interaction, options);
 
     const additionalInfo: TAdditionalInfo<IRanksKills> = (rankInfo) => {
