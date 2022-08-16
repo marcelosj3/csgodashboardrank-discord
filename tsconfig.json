@@ -1,5 +1,7 @@
 {
     "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "strictPropertyInitialization": false,
         "target": "ESNext",
         "module": "commonjs",
         "rootDir": "./src/",
