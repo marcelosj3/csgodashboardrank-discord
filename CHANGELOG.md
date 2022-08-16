@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.7.0...v1.7.1) (2022-08-16)
+
+
+### Bug Fixes
+
+* add dependencies to handle build fail ([e22419d](https://github.com/marcelosj3/project-csgo-dashboard-rank/commit/e22419dec69f6bc28218c683250592d3d7df7c6b))
+
 ## [1.7.0](https://github.com/marcelosj3/project-csgo-dashboard-rank/compare/v1.6.0...v1.7.0) (2022-08-15)
 
 
